@@ -8,5 +8,7 @@ struct Edge {
     int cost;
 };
 
-
+struct CompareEdge {
+    bool operator()(Edge const& e1, Edge const& e2);
+};
 #endif //UNTITLED_MISC_H

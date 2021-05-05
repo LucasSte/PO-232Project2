@@ -12,6 +12,7 @@ public:
     void buildGraph(list<Edge> & edges);
     // getUniqueEdgeList does the opposite of build Graph
     shared_ptr<list<Edge>> getUniqueEdgeList(); //Get unique edge list to print in a file
+    vector<Graph> primAlgorithm();
 
 private:
     int capacity;
