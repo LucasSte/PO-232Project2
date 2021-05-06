@@ -45,7 +45,7 @@ vector<Graph> Graph::primAlgorithm() {
         list<Edge> currentGraph;
         int currentEdge = initial;
         priority_queue<Edge, vector<Edge>, CompareEdge> visitQueue;
-        bool visited[gr.size()];
+        vector<bool> visited(gr.size());
 
         while (true) {
             visited[currentEdge] = true;
@@ -73,10 +73,15 @@ vector<Graph> Graph::primAlgorithm() {
             }
             else break;
         }
+        currentGraph.sort();
         Graph g(capacity);
         g.buildGraph(currentGraph);
-        output.push_back(g);
+        if(find(output.begin(), output.end(), g) == output.end()) output.push_back(g);
     }
 
     return output;
+}
+
+bool Graph::operator==(const Graph &that) {
+    return (this->gr == that.gr);
 }
