@@ -10,7 +10,7 @@ public:
     explicit Graph(int size);
     void addEdge(int a, int b, int cost);
     void buildGraph(list<Edge> & edges);
-    // getUniqueEdgeList does the opposite of build Graph
+    // getUniqueEdgeList does the opposite of buildGraph
     shared_ptr<list<Edge>> getUniqueEdgeList(); //Get unique edge list to print in a file
     vector<Graph> primAlgorithm();
     bool operator== (Graph const& that);

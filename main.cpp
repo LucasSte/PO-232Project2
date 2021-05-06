@@ -13,10 +13,9 @@ int main() {
     p.printGraph("../out1.dat", ret2, "GL");
 
     vector<Graph> trees = g.primAlgorithm();
-    int i = 1;
-    for(auto & tree : trees) {
-        p.printGraph("../tree" + to_string(i) + ".dat", tree.getUniqueEdgeList(), "Tree" + to_string(i));
-        i++;
+
+    for(int i=0; i<trees.size(); i++) {
+        p.printGraph("../tree" + to_string(i) + ".dat", trees[i].getUniqueEdgeList(), "Tree" + to_string(i));
     }
 
     return 0;
