@@ -51,7 +51,7 @@ vector<Graph> Graph::primAlgorithm() {
             visited[currentEdge] = true;
 
             for(auto & i : gr[currentEdge]) {
-                if(!visited[i.to]) visitQueue.emplace(i);
+                if(!visited[i.to]) visitQueue.push(i);
             }
 
             Edge nextV = Edge(), actualV{};
@@ -76,7 +76,26 @@ vector<Graph> Graph::primAlgorithm() {
         currentGraph.sort();
         Graph g(capacity);
         g.buildGraph(currentGraph);
-        if(find(output.begin(), output.end(), g) == output.end()) output.push_back(g);
+        bool repeated = false;
+        for(auto & h : output) {
+            if(g == h) {
+                repeated = true;
+                break;
+            }
+        }
+        if(!repeated) output.push_back(g);
+    }
+
+    vector<int> repeated;
+
+    for(int i = 0; i < output.size(); i++) {
+        for(int j = i+1; j < output.size(); j++) {
+            if(output[i] == output[j]) output[j];
+        }
+    }
+
+    for (auto & i : repeated) {
+        output.erase(output.begin() + i);
     }
 
     return output;
