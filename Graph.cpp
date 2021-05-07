@@ -41,11 +41,12 @@ shared_ptr<list<Edge>> Graph::getUniqueEdgeList() {
 vector<Graph> Graph::primAlgorithm() {
     vector<Graph> output;
 
+    vector<bool> visited(gr.size());
     for(int initial = 0; initial < gr.size(); initial++) {
         list<Edge> currentGraph;
         int currentEdge = initial;
         priority_queue<Edge, vector<Edge>, CompareEdge> visitQueue;
-        vector<bool> visited(gr.size());
+        fill(visited.begin(), visited.end(), false);
 
         while (true) {
             visited[currentEdge] = true;
@@ -54,7 +55,7 @@ vector<Graph> Graph::primAlgorithm() {
                 if(!visited[i.to]) visitQueue.push(i);
             }
 
-            Edge nextV = Edge(), actualV{};
+            Edge nextV = Edge(), actualV;
             nextV.from = -1;
 
             while (!visitQueue.empty()) {
