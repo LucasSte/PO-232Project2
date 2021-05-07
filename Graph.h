@@ -13,7 +13,7 @@ public:
     // getUniqueEdgeList does the opposite of buildGraph
     shared_ptr<list<Edge>> getUniqueEdgeList(); //Get unique edge list to print in a file
     vector<Graph> primAlgorithm();
-    bool operator== (Graph const& that);
+    bool operator== (Graph that);
 
 private:
     int capacity;

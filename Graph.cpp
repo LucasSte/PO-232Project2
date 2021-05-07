@@ -87,21 +87,9 @@ vector<Graph> Graph::primAlgorithm() {
         if(!repeated) output.push_back(g);
     }
 
-    vector<int> repeated;
-
-    for(int i = 0; i < output.size(); i++) {
-        for(int j = i+1; j < output.size(); j++) {
-            if(output[i] == output[j]) output[j];
-        }
-    }
-
-    for (auto & i : repeated) {
-        output.erase(output.begin() + i);
-    }
-
     return output;
 }
 
-bool Graph::operator==(const Graph &that) {
-    return (this->gr == that.gr);
+bool Graph::operator==(Graph that) {
+    return *(this->getUniqueEdgeList()) == *(that.getUniqueEdgeList());
 }
